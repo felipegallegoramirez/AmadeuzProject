@@ -1,0 +1,387 @@
+<BotonesSuperiores>:
+    size_hint: 1,None
+    position: self.position
+    height: 70
+    cols: 3
+    Button:
+        text: "Start"
+        size_hint: 1,None
+        height: 50
+        on_press: root.current = "screen_b"
+    Button:
+        text: "Me"
+        size_hint: 1,None
+        height: 50
+        on_press: root.current= "screen_c"
+    Button:
+        text: "Config"
+        size_hint: 1,None
+        height: 50
+        on_press: root.current= "screen_d"
+
+<video>:
+    padding: [10,10,10,10]
+    cols: 1
+    Button:
+        text: "Alfa.V_texto"
+
+
+<DataWid>:
+    size_hint: 1,None
+    height: 50
+    data: ''
+    lat: ''
+    lon: ''
+    canvas:
+        Color:
+            rgb: 0.2,0.2,0.2
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    Label:
+        size_hint_x: 0.9
+        size_font: self.width*0.4
+        text: root.data
+    Button:
+        size_hint_x: 0.1
+        text: 'Edit'
+        on_press: root.update_data(root.lat,root.lon)
+
+
+
+<MainWid>:
+    id:Alpha
+    Screen:
+        name: "screen_home"
+        BoxLayout:
+            cols: 2
+            orientation: "vertical"
+
+            BoxLayout:
+                size_hint: 1,None
+                height: 70
+                Button:
+                    text: "Start"
+                    size_hint: 1,None
+                    height: 50
+                    on_press: root.current = "screen_map"
+                    on_press: Alpha.cargar()
+                    on_press: Alpha.click()
+                Button:
+                    text: "Me"
+                    size_hint: 1,None
+                    height: 50
+                    on_press: root.current= "screen_me"
+                    on_press: Alpha.cargar()
+                    on_press: Alpha.create_database()
+                    on_press: Alpha.click()
+
+                Button:
+                    text: "Config"
+                    size_hint: 1,None
+                    height: 50
+                    on_press: root.current= "screen_config"
+                    on_press: Alpha.cargar()
+                    on_press: Alpha.click()
+            video:
+
+    Screen:
+        name: "screen_map"
+        BoxLayout:
+            padding: [10,10,10,10]
+            cols: 3
+            orientation: "vertical"
+            Button:
+                text: "Back"
+                size_hint: 1,None
+                height: 50
+                on_press: root.current= "screen_home"
+            MapView:
+                id: mapview
+                zoom: 11
+                lat: 6.217
+                lon: -75.567
+            BoxLayout:
+                size_hint: 1,None
+                height: 50
+                rows: 2
+                Label:
+                    text: "Longitude: {}".format(mapview.lon)
+                Label:
+                    text: "Latitude: {}".format(mapview.lat)
+
+
+    Screen:
+        name: "screen_me"
+        BoxLayout:
+            orientation: "vertical"
+            cols: 2
+            BoxLayout:
+                BoxLayout:
+                    orientation: "vertical"
+                    cols: 6
+                    Button:
+                        text: "Back"
+                        size_hint: 1,None
+                        height: 50
+                        on_press: Alpha.Guardado_Nombre()
+                        on_press: root.current= "screen_home" 
+                    Label:
+                        text: "Me"
+                        size_hint: 1,None
+                        height: 50
+                    BoxLayout:
+                        size_hint: 1,None
+                        height: 50
+                        rows: 2
+                        Label:
+                            text: "Nombre"
+                            size_hint: 1,None
+                            height: 50
+                        TextInput:
+                            size_hint: 1,None
+                            height: 50
+                            id: name
+                            multiline: False
+                            hint_text: 'Name'
+                    Button:
+                        size_hint: 1,None
+                        height: 50
+                        text: "Alerta Aplicacion"
+                        on_press: Alpha.Guardado_Nombre()
+                        on_press: root.current= "screen_report1"
+                    Button:
+                        size_hint: 1,None
+                        height: 50
+                        text: "Alerta Sobre Ruta"
+                        on_press: Alpha.Guardado_Nombre()
+                        on_press: root.current= "screen_report2"
+                    Label:
+                        text: "Rutas"
+            BoxLayout:
+                cols: 2
+                orientation: "vertical"
+                ScrollView:
+                    GridLayout:
+                        id: container
+                        padding: [10,10,10,10]
+                        spacing: 5
+                        size_hint_y: None
+                        cols: 1
+                        row_default_height: root.height*0.05
+                        height: self.minimum_height
+
+                Button:
+                    text: "+ Ruta"
+                    size_hint: 1,None
+                    height: 50
+                    on_press: root.current= "screen_rutas"
+
+    Screen:
+        name: "screen_report1"
+        BoxLayout:
+            cols: 2
+            orientation: "vertical"
+            BoxLayout:
+                orientation: "vertical"
+                cols: 6
+                Label:
+                    text: "Informar Aplicacion"
+                Button:
+                    text: "Back"
+                    size_hint: 1,None
+                    height: 50
+                    on_press: root.current= "screen_me"
+                BoxLayout:
+                    rows: 2
+                    Label:
+                        text: "Bug"
+                    CheckBox:
+                        group: "xd"
+                BoxLayout:
+                    rows: 2
+                    Label:
+                        text: "Error"
+                    
+                    CheckBox:
+                        group: "xd"
+                BoxLayout:
+                    rows: 2
+                    Label:
+                        text: "Sugerencia"
+                    CheckBox:
+                        group: "xd"
+                Label:
+                    text: "Descripccion"
+
+            BoxLayout:
+                cols: 2
+                TextInput:
+                    id: ti_id
+                    multiline: True
+                    hint_text: 'Description'
+            Button:
+                text: "Send"
+                size_hint: 1,None
+                height: 50
+
+    Screen:
+        name:"screen_report2"
+        BoxLayout:
+            orientation: "vertical"
+            cols: 10
+            Label:
+                text: "Informar Via"
+            Button:
+                text: "Back"
+                size_hint: 1,None
+                height: 50
+                on_press: root.current= "screen_me"
+            BoxLayout:
+                rows: 2
+                Label:
+                    text: "Accidente Grave"
+                CheckBox:
+                    group: "r2"        
+            BoxLayout:
+                rows: 2
+                Label:
+                    text: "Accidente Medio"
+                
+                CheckBox:
+                    group: "r2"
+            BoxLayout:
+                rows: 2
+                Label:
+                    text: "Accidente Grave"
+                CheckBox:
+                    group: "r2"
+            BoxLayout:
+                rows: 2
+                Label:
+                    text: "Arreglo de Via"
+                CheckBox:
+                    group: "r2"
+                
+            BoxLayout:
+                rows: 2
+                Label:
+                    text: "Manifestacion Social"
+                
+                CheckBox:
+                    group: "r2"
+            BoxLayout:
+                rows: 2
+                Label:
+                    text: "Alto Trafico"
+                CheckBox:
+                    group: "r2"
+            BoxLayout:
+                rows: 2
+                Label:
+                    text: "No identificado"
+                CheckBox:
+                    group: "r2"
+            Button:
+                text: "Send"
+                size_hint: 1,None
+                height: 50
+
+
+    Screen:
+        name:"screen_config"
+        BoxLayout:
+            cols: 2
+            orientation: "vertical"
+            BoxLayout:
+                cols: 5
+                orientation: "vertical"
+                Label:
+                    text: "Informar Via"
+                Button:
+                    text: "Back"
+                    size_hint: 1,None
+                    height: 50
+                    on_press: root.current= "screen_home"
+                    on_press: Alpha.Guardado_Config()
+                BoxLayout:
+                    rows: 2
+                    Label:
+                        text: "Icono posicion actual"
+                    CheckBox:
+                        id:Checkicon
+                BoxLayout:
+                    rows: 2
+                    Label:
+                        text: "Sonido"
+                    CheckBox:
+                        id:Checksound
+                BoxLayout:
+                    rows: 2
+                    Label:
+                        text: "Alerta"
+                    CheckBox:
+                        id:Checkalert
+
+            BoxLayout:
+                rows: 1
+                canvas:
+                    Color:
+                        rgb: 1, 1, 1
+                    Rectangle:
+                        source: 'Screenshot_1.png'
+                        size: self.size
+
+    Screen:
+        name: "screen_rutas"
+        BoxLayout:
+            cols: 7
+            orientation: "vertical"
+            Button:
+                text: "Back"
+                size_hint: 1,None
+                height: 50
+                on_press: root.current= "screen_me"
+                on_press: Alpha.Guardado_Nombre()  
+
+            Label: 
+                text: "Agregar punto"
+
+            BoxLayout:
+                rows: 2
+                Label: 
+                    text: "Id Numerico"
+                TextInput:
+                    id: Rid
+                    multiline: False
+                    hint_text: 'ID Numerico'
+
+            BoxLayout:
+                rows: 2
+                Label: 
+                    text: "Nombre"
+                TextInput:
+                    id: Rname
+                    multiline: False
+                    hint_text: 'Name'
+            BoxLayout:
+                rows: 2
+                Label: 
+                    text: "Longitud"
+                TextInput:
+                    id: Rlon
+                    multiline: False
+                    text: "{}".format(mapview.lon)
+            BoxLayout:
+                rows: 2
+                Label: 
+                    text: "Latitud"
+                TextInput:
+                    id: Rlat
+                    multiline: False
+                    text: "{}".format(mapview.lat)
+            Button:
+                text: "send"
+                size_hint: 1,None
+                height: 50
+                on_press: Alpha.insert_data()

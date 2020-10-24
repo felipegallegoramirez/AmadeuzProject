@@ -7,23 +7,31 @@
         text: "Start"
         size_hint: 1,None
         height: 50
+        background_color: (2.0, 2.0, 2.0, 1.0)
         on_press: root.current = "screen_b"
     Button:
         text: "Me"
         size_hint: 1,None
         height: 50
+        background_color: (2.0, 2.0, 2.0, 1.0) 
         on_press: root.current= "screen_c"
     Button:
         text: "Config"
         size_hint: 1,None
         height: 50
+        background_color: (2.0, 2.0, 2.0, 1.0) 
         on_press: root.current= "screen_d"
 
 <video>:
+
     padding: [10,10,10,10]
     cols: 1
     Button:
-        text: "Alfa.V_texto"
+        color: (0,0,0,1)
+        text: "Alfa.V_Text"
+        background_color: (2.0, 2.0, 2.0, 1.0)
+        font_size: 50
+        
 
 
 <DataWid>:
@@ -43,8 +51,9 @@
         size_font: self.width*0.4
         text: root.data
     Button:
-        size_hint_x: 0.1
-        text: 'Edit'
+        size_hint_x: 0.1  
+        text:'Edit'
+        background_color: (2.0, 2.0, 2.0, 1.0) 
         on_press: root.update_data(root.lat,root.lon)
 
 
@@ -64,6 +73,7 @@
                     text: "Start"
                     size_hint: 1,None
                     height: 50
+                    background_color: (2.0, 2.0, 2.0, 1.0) 
                     on_press: root.current = "screen_map"
                     on_press: Alpha.cargar()
                     on_press: Alpha.click()
@@ -71,6 +81,7 @@
                     text: "Me"
                     size_hint: 1,None
                     height: 50
+                    background_color: (2.0, 2.0, 2.0, 1.0)
                     on_press: root.current= "screen_me"
                     on_press: Alpha.cargar()
                     on_press: Alpha.check_memory()
@@ -81,6 +92,7 @@
                     text: "Config"
                     size_hint: 1,None
                     height: 50
+                    background_color: (2.0, 2.0, 2.0, 1.0) 
                     on_press: root.current= "screen_config"
                     on_press: Alpha.cargar()
                     on_press: Alpha.click()
@@ -96,6 +108,7 @@
                 text: "Back"
                 size_hint: 1,None
                 height: 50
+                background_color: (2.0, 2.0, 2.0, 1.0) 
                 on_press: root.current= "screen_home"
             MapView:
                 id: mapview
@@ -126,6 +139,7 @@
                         text: "Back"
                         size_hint: 1,None
                         height: 50
+                        background_color: (2.0, 2.0, 2.0, 1.0) 
                         on_press: Alpha.Guardado_Nombre()
                         on_press: root.current= "screen_home" 
                     Label:
@@ -150,6 +164,7 @@
                         size_hint: 1,None
                         height: 50
                         text: "Alerta Aplicacion"
+                        background_color: (2.0, 2.0, 2.0, 1.0) 
                         on_press: Alpha.Guardado_Nombre()
                         on_press: root.current= "screen_report1"
                     Button:
@@ -177,6 +192,7 @@
                     text: "+ Ruta"
                     size_hint: 1,None
                     height: 50
+                    background_color: (2.0, 2.0, 2.0, 1.0) 
                     on_press: root.current= "screen_rutas"
 
     Screen:
@@ -193,6 +209,7 @@
                     text: "Back"
                     size_hint: 1,None
                     height: 50
+                    background_color: (2.0, 2.0, 2.0, 1.0) 
                     on_press: root.current= "screen_me"
                 BoxLayout:
                     rows: 2
@@ -226,6 +243,7 @@
                 text: "Send"
                 size_hint: 1,None
                 height: 50
+                background_color: (2.0, 2.0, 2.0, 1.0) 
 
     Screen:
         name:"screen_report2"
@@ -238,6 +256,7 @@
                 text: "Back"
                 size_hint: 1,None
                 height: 50
+                background_color: (2.0, 2.0, 2.0, 1.0) 
                 on_press: root.current= "screen_me"
             BoxLayout:
                 rows: 2
@@ -287,6 +306,7 @@
             Button:
                 text: "Send"
                 size_hint: 1,None
+                background_color: (2.0, 2.0, 2.0, 1.0) 
                 height: 50
 
 
@@ -304,6 +324,7 @@
                     text: "Back"
                     size_hint: 1,None
                     height: 50
+                    background_color: (2.0, 2.0, 2.0, 1.0)
                     on_press: root.current= "screen_home"
                     on_press: Alpha.Guardado_Config()
                 BoxLayout:
@@ -387,4 +408,6 @@
                 text: "send"
                 size_hint: 1,None
                 height: 50
+                background_color: (2.0, 2.0, 2.0, 1.0)
                 on_press: Alpha.insert_data()
+   

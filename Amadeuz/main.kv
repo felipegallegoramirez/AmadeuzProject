@@ -73,6 +73,7 @@
                     height: 50
                     on_press: root.current= "screen_me"
                     on_press: Alpha.cargar()
+                    on_press: Alpha.check_memory()
                     on_press: Alpha.create_database()
                     on_press: Alpha.click()
 
@@ -101,6 +102,7 @@
                 zoom: 11
                 lat: 6.217
                 lon: -75.567
+
             BoxLayout:
                 size_hint: 1,None
                 height: 50
@@ -220,7 +222,7 @@
                     id: ti_id
                     multiline: True
                     hint_text: 'Description'
-            Button:
+            Button:<
                 text: "Send"
                 size_hint: 1,None
                 height: 50
@@ -342,7 +344,8 @@
                 size_hint: 1,None
                 height: 50
                 on_press: root.current= "screen_me"
-                on_press: Alpha.Guardado_Nombre()  
+                on_press: Alpha.Guardado_Nombre()
+                on_press: Alpha.check_memory()
 
             Label: 
                 text: "Agregar punto"

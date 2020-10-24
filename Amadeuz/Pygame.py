@@ -107,6 +107,8 @@ while not done:
 		print("Posicion en x: ",x,"\nPosicion en y: ",y)
 		print("Posicion F en x: ",xf,"\nPosicion F en y: ",yf)
 		Cuadro(x*30,y*30,10,10,(0,0,255))
+
+		
 		while llego:
 
 			if(x+1>tamx-1):
